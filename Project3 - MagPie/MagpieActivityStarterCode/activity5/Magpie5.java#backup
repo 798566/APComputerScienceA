@@ -237,6 +237,7 @@ public class Magpie5
             }
 
             // If before and after aren't letters, we've
+			// found the word
 			if (((before.compareTo("a") < 0) || (before
 					.compareTo("z") > 0)) // before is not a
 											// letter
@@ -284,10 +285,7 @@ public class Magpie5
 			"Hmmm.",
 			"Do you really think so?",
 			"You don't say.",
-			"Wow!",
-			"Thats cool.",
-			"Yesh.",
-			"Thats true?"
+			
 	};
 	
 }
