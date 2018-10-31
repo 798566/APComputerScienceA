@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * ArrayList Project - StudentList
  *
@@ -8,4 +8,8 @@
 public class StudentList
 {
     
+    ArrayList<Student>student = new ArrayList<Student>();
+    
+    addStudentToList();
+    printStudentList();
 }
