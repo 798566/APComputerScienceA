@@ -13,30 +13,34 @@ public class StudentListRunner
         System.out.println(menu); // prints menu to console for reader
         
         Scanner s = new Scanner (System.in); // get user input - create scanner
-        s.nextLine(); // get user input - create scanner: move along
+        // get user input - create scanner: move along
         // get user input
-        int userCommand; 
+        int userCommand = s.nextInt(); // assign user input to caller userCommand
         
-        return userCommand; // returns int of user command
     }
     
     // select appropriate StudList method according to user command or end program
-    public static void main(){
-        studentList.addStudentToList();
-        studentList.deleteStudentFromList();
-        studentList.editStudentList();
-        studentList.clearList();
-        studentList.printAll();
-        studentList.printStudent();
+    public Student Run(){
         
-        if(userCommand != 0){ // select appropriate action
-            
+        if (userCommand == "1"){ // add a student to the list
+            studentList.addStudentToList();
+        }
+        else if (userCommand == "2"){ // delete a student record
+            studentList.deleteStudentFromList();
+        }
+        else if (userCommand == "3"){ // print a student record to the console
+            studentList.printList();
+        }
+        else if (userCommand == "4"){ // search for a student by name or student number
+            studentList.searchForStudent();
+        }
+        else if (userCommand == "5"){ // clear all students from the list
+            studentList.clearList();
         }
         else{ // end program
-            
+            System.out.println("ERROR - please use one of the above commands");
         }
     }
-    
     
     
 }

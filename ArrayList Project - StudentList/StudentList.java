@@ -10,6 +10,19 @@ public class StudentList
     
     ArrayList<Student>student = new ArrayList<Student>();
     
-    addStudentToList();
-    printStudentList();
+    public Student addStudentToList(){
+    
+    }
+    public Student deleteStudentFromList(){
+    
+    }
+    public Student printList(){
+    
+    }
+    public Student searchForStudent(){
+    
+    }
+    public Student clearList(){
+    
+    }
 }
