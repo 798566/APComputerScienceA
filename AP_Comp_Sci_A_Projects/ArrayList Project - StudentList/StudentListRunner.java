@@ -9,6 +9,8 @@ public class StudentListRunner
 {
     StudentList studentList = new StudentList(); // instatiate StudentList object
     
+    String menu = "Type Number Listed Before Action To Impliment... /n 1    add a new student record /n 2    delete a student record /n 3     print a student record to the console /n 4     search for a student by name or student number /n 5     clear all students from list";
+    
     public int menuNumber(){ // menuNumber Method - displays menu, gets user inpt, returns userCommand
         System.out.println(menu); // prints menu to console for reader
         

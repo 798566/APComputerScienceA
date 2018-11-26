@@ -1,8 +1,14 @@
 #BlueJ class context
 comment0.target=GridTester
-comment0.text=\r\n\ lab\ 1106\ -\ 2D\ Arrays\r\n\r\n\ @author\ Sophia\r\n\ @version\ 1106\r\n
+comment0.text=\n\ lab\ 1106\ -\ 2D\ Arrays\n\n\ @author\ Sophia\n\ @version\ 1106\n
 comment1.params=
 comment1.target=void\ loadArray()
 comment2.params=
 comment2.target=int\ sumAll()
-numComments=3
+comment3.params=
+comment3.target=int\ findGreatest()
+comment4.params=greatest
+comment4.target=int\ numberOfGreatest(int)
+comment5.params=grid\ sum
+comment5.target=double\ findAvg(int[][],\ int)
+numComments=6

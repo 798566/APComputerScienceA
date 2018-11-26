@@ -62,10 +62,16 @@ public class Exam2TC
         }
     }
     
-    public void freeResponce1(){
-        
+    // Free Responce 1
+    private boolean isActive;
+    public boolean isActive(){
+        return this.isActive;
+    }
+    public void setActive(boolean isActive){
+        this.isActive = isActive;
     }
     
+    // Free Responce 2
     public String transfrmILike (String str) {
         str = str.trim();
         String lastChar = str.substring(str.length()-1);

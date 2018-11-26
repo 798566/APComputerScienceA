@@ -2,21 +2,56 @@
 /**
  * Write a description of class Student here.
  *
- * @author (your name)
+ * @author Sophia Raab
  * @version (a version number or a date)
  */
 public class Student
 {
-    String menu = "Type Number Listed Before Action To Impliment... /n 1    add a new student record /n 2    delete a student record /n 3     print a student record to the console /n 4     search for a student by name or student number /n 5     clear all students from list";
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private int studNumber;
+    private double gpa;
+    
+    // setters
+    public void setFirstName(String first){
+        firstName = first;
+    }
+    
+    public void setMiddleName(String middle){
+        middleName = middle;
+    }
+    
+    public void setLastName(String last){
+        lastName = last;
+    }
+    
+    public void setStudNumber(int studNumber){
+        studNumber = studNumber;
+    }
+    
+    public void setGpa(double GPA){
+        gpa = GPA;
+    }
+    
+    // getters 
+    public String getName(){
+        String fullName = lastName + ", " + firstName + " " + middleName;
+        return fullName;
+    }
+    
+    public String getGpa(){
+        String gpa = new String(GPA);
+        return gpa; // need to fix so has 2 decimal places
+    }
+    
+    public String getStudNumber(){
+        String studNumber = new String(studNumber);
+        return studNumber;
+    }
     
     
-    String firstName;
-    String middleName;
-    String lastName;
-    int studNUmber;
-    double gpa;
-    
-    String fullName = lastName + ", " + firstName + " " + middleName;
     
     String userCommand = new String();
+
 }
