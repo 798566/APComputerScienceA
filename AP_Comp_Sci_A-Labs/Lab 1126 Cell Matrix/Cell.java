@@ -24,4 +24,7 @@ public class Cell
     public int getInt(){
         return x;
     }
+    public Cell[] getNeighbors(){
+        return neighbors;
+    }
 }

@@ -81,22 +81,19 @@ public class CellMatrix{
     //  Find's the sum of each of the neighbors and returns the greatest 
     // neighbor value
     public int getGreatestNeighbors(){
-        int sum = 0;
-        for (int r = 0; r < cells.length; r++){
-            //for ( int c = 0; c < cells[r].length; c++){
-              //  cells[r][c] neighbors 
-              //  for (int i = 0; i < neighbors[].length; i++){
-                    
-              //  }
-            //}
-        }
         int greatest = 0;
-        //for ( int r = 0; r < cells.length; r++){
-           // for (int c = 0; c < cells[r])
-        ///}
-        
-        
+        for (int r = 0; r < cells.length; r++){
+            for ( int c = 0; c < cells[r].length; c++){
+                Cell[] ca = cells[r][c].getNeighbors();
+                int sum = 0;
+                for (int i = 0; i < ca.length; i++){
+                    sum += ca[i].getInt();
+                    if (sum > greatest) {
+                        greatest = sum;
+                    }
+                }
+            }
+        }
         return greatest;
     }
-
 }
