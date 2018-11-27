@@ -17,7 +17,6 @@ public class CellMatrix{
      */
     public CellMatrix(int a, int b){
         cells = new Cell[a][b];
-
     }
 
     /**
@@ -27,7 +26,8 @@ public class CellMatrix{
     public void printMatrix(){
         for (int r = 0; r < cells.length; r++){
             for ( int c = 0; c < cells[r].length; c++){
-                System.out.print(cells[r][c]);
+                //System.out.print(cells[r][c]);
+                System.out.print(cells [r][c].getInt() + " ");
             }
             System.out.println();
         }
@@ -48,14 +48,14 @@ public class CellMatrix{
                 if (cells[r][c] == cells[0][0]){ // top left corner
                     Cell[] neighbors = {cells[r + 1][c], cells[r][c + 1]}; // down one, right one
                 }
-                else if (cells[r][c] == cells[0][cells[r].length]){ // top right corner
-                    Cell[] neighbors = {cells[r + 1][c], cells[r][c +1], cells[r -1][c], cells[r][c -1]}; // where I left off - fix this line and rest of corners - and the last method
+                else if (cells[r][c] == cells[0][cells[r].length -1]){ // top right corner
+                    Cell[] neighbors = {cells[r + 1][c], cells[r][c -1]}; // down one, left one
                 }
-                else if (cells[r][c] == cells[cells.length][cells[r].length]){ // bottom right corner
-                    Cell[] neighbors = {cells[r + 1][c], cells[r][c +1], cells[r -1][c], cells[r][c -1]};
+                else if (cells[r][c] == cells[cells.length -1][cells[r].length -1]){ // bottom right corner
+                    Cell[] neighbors = {cells[r -1][c], cells[r][c -1]}; // up one, left one
                 }
-                else if (cells[r][c] == cells[cells.length][0]){ // top right corner
-                    Cell[] neighbors = {cells[r + 1][c], cells[r][c +1], cells[r -1][c], cells[r][c -1]};
+                else if (cells[r][c] == cells[cells.length -1][0]){ // bottom left corner
+                    Cell[] neighbors = {cells[r + 1][c], cells[r][c +1]};
                 }
                 // EXTERIOR ROWS/COLUMN with 3 neighbors each
                 else if (r == 0){ // top row
@@ -72,7 +72,7 @@ public class CellMatrix{
                 }
                 // INTERIOR with all 4 neighbors
                 else {
-                    Cell[] neighbors = {cells[r + 1][c], cells[r][c +1], cells[r -1][c], cells[r][c -1]};
+                    Cell[] neighbors = {cells[r + 1][c], cells[r][c + 1], cells[r - 1][c], cells[r][c - 1]};
                 }
             }
         }
@@ -83,17 +83,17 @@ public class CellMatrix{
     public int getGreatestNeighbors(){
         int sum = 0;
         for (int r = 0; r < cells.length; r++){
-            for ( int c = 0; c < cells[r].length; c++){
-                cells[r][c] neighbors 
-                for (int i = 0; i < neighbors[].length; i++){
+            //for ( int c = 0; c < cells[r].length; c++){
+              //  cells[r][c] neighbors 
+              //  for (int i = 0; i < neighbors[].length; i++){
                     
-                }
-            }
+              //  }
+            //}
         }
         int greatest = 0;
-        for ( int r = 0; r < cells.length; r++){
-            for (int c = 0; c < cells[r])
-        }
+        //for ( int r = 0; r < cells.length; r++){
+           // for (int c = 0; c < cells[r])
+        ///}
         
         
         return greatest;
