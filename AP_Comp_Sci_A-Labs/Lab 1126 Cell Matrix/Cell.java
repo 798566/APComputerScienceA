@@ -24,7 +24,14 @@ public class Cell
     public int getInt(){
         return x;
     }
+    
     public Cell[] getNeighbors(){
         return neighbors;
+    }
+    
+    public void setNeighbors(Cell[] pneighbors){
+        for(int i = 0; i < pneighbors.length; i++ ){
+            neighbors[i] = pneighbors[i];
+        }
     }
 }
