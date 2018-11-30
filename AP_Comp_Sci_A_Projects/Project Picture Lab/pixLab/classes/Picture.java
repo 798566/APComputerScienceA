@@ -98,6 +98,7 @@ public class Picture extends SimplePicture
     }
   }
   
+  // Method to keep only the Blue
   public void keepOnlyBlue()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -111,6 +112,7 @@ public class Picture extends SimplePicture
     }
   }
   
+  // Method to keep only the Red
     public void keepOnlyRed()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -124,6 +126,7 @@ public class Picture extends SimplePicture
     }
   }
   
+  // Method to keep only the Green
     public void keepOnlyGreen()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -137,6 +140,7 @@ public class Picture extends SimplePicture
     }
   }
   
+  // Method to negate
   public void negate()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -151,6 +155,7 @@ public class Picture extends SimplePicture
     }
   }
   
+  // metod to set to Graycale
     public void grayscale()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -167,6 +172,7 @@ public class Picture extends SimplePicture
     }
   }
   
+  // Method to fix Underwater image
   public void fixUnderwater()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -201,6 +207,7 @@ public class Picture extends SimplePicture
     } 
   }
   
+  // Method to mirror vertically from right to left <-
   public void mirrorVerticalRightToLeft()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -214,6 +221,44 @@ public class Picture extends SimplePicture
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][width - 1 - col];
         leftPixel.setColor(rightPixel.getColor());
+      }
+    } 
+  }
+  
+  // Method to mirror horizontally v
+  public void mirrorHorizontal()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int length = pixels.length;
+    int width = pixels[0].length;
+    for (int row = 0; row < length / 2; row++)
+    {
+      for (int col = 0; col < width; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[length - 1 - row][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    } 
+  }
+  
+  // Method to mirror horizontally from the bottom onto the top ^
+  public void mirrorHorizontalBotToTop()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int length = pixels.length;
+    int width = pixels[0].length;
+    for (int row = 0; row < length / 2; row++)
+    {
+      for (int col = 0; col < width; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[length - 1 - row][col];
+        topPixel.setColor(bottomPixel.getColor());
       }
     } 
   }
@@ -233,11 +278,36 @@ public class Picture extends SimplePicture
       // loop from 13 to just before the mirror point
       for (int col = 13; col < mirrorPoint; col++)
       {
-        
+        count = count + 1;
         leftPixel = pixels[row][col];      
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+    System.out.print(count);
+  }
+  
+  // Method to mirror only part of the snowman's image - his arms
+  public void mirrorArms()
+  {
+    int mirrorPoint = 194;
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    //int length = pixels.length;
+    //int width = pixels[0].length;
+    
+    // loop through the rows
+    for (int row = 163; row < mirrorPoint; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 105; col < 295; col++)
+      {
+        topPixel = pixels[row][col];      
+        bottomPixel = pixels[mirrorPoint - row + mirrorPoint]                       
+                         [col];
+        bottomPixel.setColor(topPixel.getColor());
       }
     }
   }
