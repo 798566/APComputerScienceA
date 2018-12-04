@@ -295,8 +295,6 @@ public class Picture extends SimplePicture
     Pixel topPixel = null;
     Pixel bottomPixel = null;
     Pixel[][] pixels = this.getPixels2D();
-    //int length = pixels.length;
-    //int width = pixels[0].length;
     
     // loop through the rows
     for (int row = 163; row < mirrorPoint; row++)
@@ -308,6 +306,29 @@ public class Picture extends SimplePicture
         bottomPixel = pixels[mirrorPoint - row + mirrorPoint]                       
                          [col];
         bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+  }
+  
+  public void mirrorGull()
+  {
+    int mirrorPoint = 345;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    //int length = pixels.length;
+    //int width = pixels[0].length;
+    
+    // loop through the rows
+    for (int row = 235; row < 322; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 238; col < mirrorPoint; col++)
+      {
+        leftPixel = pixels[row][col];      
+        rightPixel = pixels[row]                       
+                         [mirrorPoint - col + mirrorPoint];
+        rightPixel.setColor(leftPixel.getColor());
       }
     }
   }
@@ -343,6 +364,32 @@ public class Picture extends SimplePicture
     }   
   }
 
+  public void copyME(Picture fromPic, 
+                 int destinationStartRow, int destinationStartCol, 
+                 int sourceEndRow, int sourceEndCol, int sourceStartRow, int sourceStartCol)
+  {
+    Pixel fromPixel = null;
+    Pixel toPixel = null;
+    Pixel[][] toPixels = this.getPixels2D();
+    Pixel[][] fromPixels = fromPic.getPixels2D();
+    for (int fromRow = sourceStartRow, toRow = destinationStartRow; 
+         fromRow < fromPixels.length &&
+         toRow < toPixels.length; 
+         fromRow++, toRow++)
+    {
+      for (int fromCol = sourceStartCol, toCol = destinationStartCol; 
+           fromCol < fromPixels[0].length &&
+           toCol < toPixels[0].length;  
+           fromCol++, toCol++)
+      {
+        fromPixel = fromPixels[fromRow][fromCol];
+        toPixel = toPixels[toRow][toCol];
+        toPixel.setColor(fromPixel.getColor());
+      }
+    }   
+  }
+
+  
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
