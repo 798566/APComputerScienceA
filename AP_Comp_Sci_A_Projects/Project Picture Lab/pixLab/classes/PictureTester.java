@@ -142,10 +142,10 @@ public class PictureTester
         canvas.explore();
     }
     
-    public static void testCopyME()
+    public static void testMyCollage()
     {
         Picture canvas = new Picture("swan.jpg");
-        canvas.copyME();
+        canvas.createMyCollage();
         canvas.explore();
     }
 
@@ -180,7 +180,7 @@ public class PictureTester
         //testMirrorGull();
         //testMirrorDiagonal();
         //testCollage();
-        testCopyME();
+        testMyCollage();
         //testCopy();
         //testEdgeDetection();
         //testEdgeDetection2();

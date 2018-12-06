@@ -363,32 +363,6 @@ public class Picture extends SimplePicture
       }
     }   
   }
-
-  public void copyME(Picture fromPic, 
-                 int destinationStartRow, int destinationStartCol, 
-                 int sourceEndRow, int sourceEndCol, int sourceStartRow, int sourceStartCol)
-  {
-    Pixel fromPixel = null;
-    Pixel toPixel = null;
-    Pixel[][] toPixels = this.getPixels2D();
-    Pixel[][] fromPixels = fromPic.getPixels2D();
-    for (int fromRow = sourceStartRow, toRow = destinationStartRow; 
-         fromRow < fromPixels.length &&
-         toRow < toPixels.length; 
-         fromRow++, toRow++)
-    {
-      for (int fromCol = sourceStartCol, toCol = destinationStartCol; 
-           fromCol < fromPixels[0].length &&
-           toCol < toPixels[0].length;  
-           fromCol++, toCol++)
-      {
-        fromPixel = fromPixels[fromRow][fromCol];
-        toPixel = toPixels[toRow][toCol];
-        toPixel.setColor(fromPixel.getColor());
-      }
-    }   
-  }
-
   
   /** Method to create a collage of several pictures */
   public void createCollage()
@@ -407,6 +381,60 @@ public class Picture extends SimplePicture
     this.write("collage.jpg");
   }
   
+  // MY method to create a copy partial image
+  public void copyPartial(Picture fromPic,
+                 int sourceRow, int sourceCol,
+                 int destinationRow, int destinationCol)
+  {
+    Pixel fromPixel = null;
+    Pixel toPixel = null;
+    Pixel[][] toPixels = this.getPixels2D();
+    Pixel[][] fromPixels = fromPic.getPixels2D();
+    for (int fromRow = 0, toRow = sourceRow; 
+         fromRow < fromPixels.length &&
+         toRow < destinationRow; 
+         fromRow++, toRow++)
+    {
+      for (int fromCol = 0, toCol = sourceCol; 
+           fromCol < fromPixels[0].length &&
+           toCol < destinationCol;  
+           fromCol++, toCol++)
+      {
+        fromPixel = fromPixels[fromRow][fromCol];
+        toPixel = toPixels[toRow][toCol];
+        toPixel.setColor(fromPixel.getColor());
+      }
+    }   
+  }
+  
+  // my method to create the collage with my partial images
+  public void createMyCollage()
+  {
+    Picture flower1 = new Picture("meFlower1.jpg");
+    Picture flower2 = new Picture("meFlower2.jpg");
+    Picture flower3 = new Picture("meFlower3.jpg");
+    Picture flower4 = new Picture("meFlower4.jpg");
+    Picture flower5 = new Picture("meFlower5.jpg");
+    Picture flower6 = new Picture("meFlower6.jpg");
+    this.copyPartial(flower1,0,0,0,0);
+    this.copyPartial(flower2,0,0,100,100);
+    this.copyPartial(flower3,0,0,200,200);
+    this.copyPartial(flower4,0,0,300,300);
+    this.mirrorHorizontal();
+    this.copyPartial(flower5,0,0,350,350);
+    this.mirrorVertical();
+    Picture flowerAllBlue = new Picture(flower2);
+    flowerAllBlue.keepOnlyBlue();
+    this.copyPartial(flowerAllBlue,300,0,323,75);
+    this.copyPartial(flower1,100,200,200,200);
+    this.copyPartial(flower2,200,50,0,425);
+    this.copyPartial(flower3,300,120,50,110);
+    this.mirrorHorizontal();
+    this.copyPartial(flower4,325,230,125,321);
+    this.mirrorVertical();
+    this.copyPartial(flower5,275,370,225,234);
+    this.write("canvas.jpg");
+  }
   
   /** Method to show large changes in color 
     * @param edgeDist the distance for finding edges
