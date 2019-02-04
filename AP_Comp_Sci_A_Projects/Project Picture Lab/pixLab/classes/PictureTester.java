@@ -153,10 +153,26 @@ public class PictureTester
     /** Method to test edgeDetection */
     public static void testEdgeDetection()
     {
-        Picture flower = new Picture("meFlower2.jpg");
+        Picture flower = new Picture("meFlower6.jpg");
         flower.explore();
-        flower.edgeDetection(10);
+        flower.edgeDetection(25);
         flower.explore();
+    }
+    
+    public static void testEdgeDetection2()
+    {
+        Picture pic = new Picture("0_myPic_Victor_YURI-ON-ICE.jpg");
+        pic.explore();
+        pic.edgeDetection2(10);
+        pic.explore();
+    }
+    
+    public static void testEdgeDetectionMyFace()
+    {
+        Picture pic = new Picture("myFace.jpg");
+        pic.explore();
+        pic.edgeDetection2(15);
+        pic.explore();
     }
 
     /** Main method for testing.  Every class can have a main
@@ -184,8 +200,9 @@ public class PictureTester
         //testCollage();
         //testMyCollage();
         //testCopy();
-        testEdgeDetection();
-        //testEdgeDetection2();
+        //testEdgeDetection();
+        testEdgeDetection2();
+        //testEdgeDetectionMyFace();
         //testChromakey();
         //testEncodeAndDecode();
         //testGetCountRedOverValue(250);

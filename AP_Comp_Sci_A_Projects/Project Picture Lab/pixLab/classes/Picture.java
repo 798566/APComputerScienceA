@@ -440,38 +440,54 @@ public class Picture extends SimplePicture
     * @param edgeDist the distance for finding edges
     */
   public void edgeDetection(int edgeDist)
-  {
-    Pixel topPixel = null;
-    Pixel bottomPixel = null;
+  { 
     Pixel leftPixel = null;
     Pixel rightPixel = null;
     Pixel[][] pixels = this.getPixels2D();
-    Color bottomColor = null;
     Color rightColor = null;
+     for (int row = 0; row < pixels.length; row++)
+    {
+       for (int col = 0; col < pixels[0].length-1; col++)
+       {
+          leftPixel = pixels[row][col];
+          rightPixel = pixels[row][col+1];
+          rightColor = rightPixel.getColor();
+          if (leftPixel.colorDistance(rightColor) >edgeDist){
+             leftPixel.setColor(Color.BLACK);
+           }
+          else {
+             leftPixel.setColor(Color.WHITE);
+          }
+       }
+    }
+  }
+   
+  // my method to do edge detection testing both vertically and horizontally
+  public void edgeDetection2(int edgeDist)
+  {
+    Pixel atPixel = null;
+    Pixel rightPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    Color rightColor = null;
+    Pixel bottomPixel = null;
+    Color bottomColor = null;
     for (int row = 0; row < pixels.length-1; row++)
     {
       for (int col = 0; col < pixels[0].length-1; col++)
       {
-        leftPixel = pixels[row][col];
-        rightPixel = pixels[row][col+1];
-        rightColor = rightPixel.getColor();
-        
-        topPixel = pixels[row][col];          
-        bottomPixel = pixels[row+1][col];
-        bottomColor = bottomPixel.getColor();
+        atPixel = pixels[row][col]; // pixel the loop is at which we are comparing to others and changing
+        rightPixel = pixels[row][col+1];   // column
+        rightColor = rightPixel.getColor();  // column
+                  
+        bottomPixel = pixels[row+1][col];   // row
+        bottomColor = bottomPixel.getColor();   //row
           
-        if (leftPixel.colorDistance(rightColor) > edgeDist) {
-           //    || topPixel.colorDistance(bottomColor) > edgeDist) {
-          leftPixel.setColor(Color.BLACK);
-          //topPixel.setColor(Color.BLACK);
+        if (atPixel.colorDistance(rightColor) > edgeDist       // column test
+                  || atPixel.colorDistance(bottomColor) > edgeDist) {    // row test
+          atPixel.setColor(Color.BLACK); // set if different
         }
         else {
-          leftPixel.setColor(Color.WHITE);
-          topPixel.setColor(Color.WHITE);
-        }
-        
-        if (topPixel.colorDistance(bottomColor) > edgeDist){
-            topPixel.setColor(Color.BLACK);
+          atPixel.setColor(Color.WHITE);  // set if close 
         }
       }
     }
